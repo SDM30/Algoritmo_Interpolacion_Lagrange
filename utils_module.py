@@ -9,6 +9,7 @@ import pandas as pd
 
 from interpolation_algorithm_module import lagrange_interpolation, interpolate_by_list
 from dataclasses import dataclass
+from matplotlib.ticker import ScalarFormatter
 
 plt.switch_backend("Agg")
 
@@ -133,8 +134,14 @@ def plot_aprox(points):
     ax_right.set_title("Sin outlier")
     ax_right.set_xlabel("Año")
     ax_right.legend()
+        
+    formatter = ScalarFormatter(useOffset=False)
+    formatter.set_scientific(False)
 
-    plt.suptitle("Evolución poblacional")
+    ax_left.yaxis.set_major_formatter(formatter)
+    ax_right.yaxis.set_major_formatter(formatter)
+
+    plt.suptitle("Año-Población")
     output_dir = "out"
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, "evolucion_poblacional.png")
