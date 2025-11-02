@@ -1,7 +1,12 @@
+import os
 import sys
 import pandas as pd
 
 from utils_module import program_menu, plot_aprox
+
+def resource_path(relative_path: str) -> str:
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, relative_path)
 
 def proccess_user_input():
     """Procesa los argumentos de línea de comandos y carga la fuente de datos seleccionada."""
@@ -9,7 +14,7 @@ def proccess_user_input():
     name = ""
     src_data = None
     valid = False
-    default_name = "in/[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx"
+    default_name = resource_path("in/[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx")
     default_sheet = "País 20"
 
     if len(sys.argv) == 1:
