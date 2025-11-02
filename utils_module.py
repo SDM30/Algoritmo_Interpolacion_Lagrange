@@ -47,8 +47,6 @@ def program_menu(data):
     """Controla la interacción con el usuario para seleccionar los valores a interpolar."""
     years = data["Año"].tolist()
     populations = data["Población"].tolist()
-    print(years)
-    print(populations)
     
     x_i = []
     population_i = []

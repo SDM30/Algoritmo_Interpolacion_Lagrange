@@ -43,6 +43,7 @@ def proccess_user_input():
         return
     
     if valid:
+        print("Iniciando Programa...")
         program_menu(src_data)
 
 
