@@ -1,6 +1,4 @@
 def lagrange_interpolation(nodes, y_i, x):
-    # Obtener enésimo polinomio de interpolación de Lagrange
-    # Grado a lo sumo n
     approximation = 0
     l = []
     for k in range(len(nodes)):
@@ -9,7 +7,7 @@ def lagrange_interpolation(nodes, y_i, x):
         for i in range(len(nodes)):
             if k != i:
                 l_k *= (x - nodes[i])/(x_k - nodes[i])
-                #print(f"({x}-{nodes[i]})/({x_k}-{nodes[i]})")
+                
         l.append(l_k)
     
     for k in range(len(nodes)):
