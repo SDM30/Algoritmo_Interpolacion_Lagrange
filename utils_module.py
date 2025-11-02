@@ -19,6 +19,7 @@ class PopulPoint:
     interpolated: bool
     
 def output_aprox(points):
+    """Genera un archivo de Excel con las estimaciones calculadas."""
     estimated = [p for p in points if p.interpolated]
     years_est, population_est = zip(*((p.year, p.population) for p in estimated)) if estimated else ([], [])
     rows = pd.DataFrame({
@@ -31,6 +32,7 @@ def output_aprox(points):
     
     
 def merge_interpolation_points(x_i, population_i, x, population_aprox):
+    """Combina los datos originales con las aproximaciones manteniendo el orden cronológico."""
     points = [PopulPoint(year, population, False) for year, population in zip(x_i, population_i)]
     known_years = {point.year for point in points}
     for year, population in zip(x, population_aprox):
@@ -41,6 +43,7 @@ def merge_interpolation_points(x_i, population_i, x, population_aprox):
     return points
 
 def program_menu(data):
+    """Controla la interacción con el usuario para seleccionar los valores a interpolar."""
     years = data["Año"].tolist()
     populations = data["Población"].tolist()
     print(years)
@@ -76,23 +79,27 @@ def program_menu(data):
 
         elif usr_in == len(x_opt) + 1:
             print("Estimando para los años faltantes...")
-            print(interpolate_by_list(x_i,population_i,x_opt))
             population_aprox = interpolate_by_list(x_i,population_i,x_opt)
             points = merge_interpolation_points(x_i,population_i,x_opt,population_aprox)
             plot_aprox(points)
             output_aprox(points)
-            break
+            print("""En la carpeta out/ se ha creado un archivo con las estimaciones para cada uno de los años faltantes y una grafica año-población""")
+            input("Presiona Enter para continuar…")
+            
 
         elif 1 <= usr_in <= len(x_opt):
             selected_year = x_opt[usr_in - 1]
             print(f"Año seleccionado: {selected_year}")
-            print(lagrange_interpolation(x_i, population_i, selected_year))
-            break
+            population_est = lagrange_interpolation(x_i, population_i, selected_year)
+            print(f"Población estimada: {population_est}")
+            input("Presiona Enter para continuar…")
+            
 
         else:
             print("Ingrese una opción valida.")        
 
 def plot_points(ax, known_points, estimated_points):
+    """Traza los puntos conocidos e interpolados sobre el eje recibido."""
     years_known, population_known = zip(*((p.year, p.population) for p in known_points)) if known_points else ([], [])
     years_est, population_est = zip(*((p.year, p.population) for p in estimated_points)) if estimated_points else ([], [])
     combined = sorted(known_points + estimated_points, key=lambda p: p.year)
@@ -105,6 +112,7 @@ def plot_points(ax, known_points, estimated_points):
         ax.plot(years_est, population_est, "s", color="orange", label="Interpolados")
 
 def plot_aprox(points):
+    """Construye las gráficas comparativas y guarda la imagen resultante en disco."""
     known = [p for p in points if not p.interpolated]
     estimated = [p for p in points if p.interpolated]
 
