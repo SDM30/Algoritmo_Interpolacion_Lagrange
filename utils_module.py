@@ -105,11 +105,11 @@ def plot_points(ax, known_points, estimated_points):
     combined = sorted(known_points + estimated_points, key=lambda p: p.year)
     if combined:
         years_all, pops_all = zip(*((p.year, p.population) for p in combined))
-        ax.plot(years_all, pops_all, "-", color="blue", linewidth=1, alpha=0.6)
+        ax.plot(years_all, pops_all, "-", color="blue", linewidth=2, alpha=0.6)
     if years_known:
         ax.plot(years_known, population_known, "o", label="Datos")
     if years_est:
-        ax.plot(years_est, population_est, "s", color="orange", label="Interpolados")
+        ax.plot(years_est, population_est, "s", color="orange", label="Datos estimados")
 
 def plot_aprox(points):
     """Construye las gráficas comparativas y guarda la imagen resultante en disco."""
