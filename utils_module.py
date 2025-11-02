@@ -62,7 +62,7 @@ def program_menu(data):
     while True:
         print("\n=== Algoritmo de Interpolación ===")
         for idx, year in enumerate(x_opt, start=1):
-            print(f"{idx}. Año {year}")
+            print(f"{idx}. Año {year}.")
         print(f"{len(x_opt) + 1}. Estimar para todos los datos faltantes.")
         print(f"{len(x_opt) + 2}. Salir.")
 
@@ -120,7 +120,7 @@ def plot_aprox(points):
     )
 
     plot_points(ax_left, known, estimated)
-    ax_left.set_title("Con outlier")
+    ax_left.set_title("Con valor atípico")
     ax_left.set_xlabel("Año")
     ax_left.set_ylabel("Población")
     ax_left.legend()
@@ -129,7 +129,7 @@ def plot_aprox(points):
     filtered_known = [p for p in known if p.population > threshold]
     filtered_estimated = [p for p in estimated if p.population > threshold]
     plot_points(ax_right, filtered_known, filtered_estimated) 
-    ax_right.set_title("Sin outlier")
+    ax_right.set_title("Sin valor atípico")
     ax_right.set_xlabel("Año")
     ax_right.legend()
         
@@ -142,5 +142,5 @@ def plot_aprox(points):
     plt.suptitle("Año-Población")
     output_dir = "out"
     os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, "evolucion_poblacional.png")
+    output_path = os.path.join(output_dir, "grafica_ap.png")
     fig.savefig(output_path, dpi=150, bbox_inches="tight")
