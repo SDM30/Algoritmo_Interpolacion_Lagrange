@@ -55,7 +55,7 @@
 5. Generar el ejecutable con PyInstaller:
 
    ```bash
-   pyinstaller --onefile --add-data "in\[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx;in" main.py
+   pyinstaller --onedir --add-data "in\[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx;in" --distpath . --name runnable_program main.py
    ```
 
 6. Ejecutar con parámetros (OPCIONAL):
