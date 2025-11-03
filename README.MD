@@ -63,7 +63,7 @@
     Si se ejecuta sin parametros se toma el país 20, el asignado al autor del programa
 
    ```bash
-   .\dist\main.exe -f ".\in\[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx" "País 16"
+   .\runnable_program\runnable_program.exe -f ".\in\[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx" "País 16"
    ```
 
 7. Ejecutar sin parámetros:
