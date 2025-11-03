@@ -1,4 +1,7 @@
 def lagrange_interpolation(nodes, y_i, x):
+    """Calcula el valor interpolado en el punto x utilizando el 
+    polinomio de Lagrange construido a partir de los nodos y valores 
+    conocidos de la función."""
     approximation = 0
     l = []
     for k in range(len(nodes)):
@@ -16,6 +19,7 @@ def lagrange_interpolation(nodes, y_i, x):
     return round(approximation)
 
 def interpolate_by_list(nodes, y_i, x):
+    """Interpolar varios puntos"""
     return [lagrange_interpolation(nodes, y_i, value) for value in x]
         
     
