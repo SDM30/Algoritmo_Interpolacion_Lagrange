@@ -1,0 +1,42 @@
+# Instrucciones de Ejecución - Windows
+
+En la carpeta runnable_program se encuentra el ejecutable.  
+Al correrlo y calcular todos los puntos, en esta carpeta también se crea la salida.
+
+## Ejecutar código fuente
+
+1. Crear entorno virtual:  
+python -m venv venv
+
+2. Activar el entorno virtual:  
+venv\Scripts\activate.bat
+
+3. Instalar dependencias:  
+pip install -r requirements.txt
+
+4. Ejecutar el programa:  
+python main.py
+
+## Crear ejecutable
+
+1. Crear entorno virtual:  
+python -m venv venv
+
+2. Activar el entorno virtual:  
+venv\Scripts\activate.bat
+
+3. Instalar dependencias:  
+pip install -r requirements.txt
+
+4. Instalar PyInstaller (si no está incluido en requirements.txt):  
+pip install pyinstaller
+
+5. Generar el ejecutable con PyInstaller:  
+pyinstaller --onedir --add-data "in\[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx;in" --distpath . --name runnable_program main.py
+
+6. Ejecutar con parámetros (opcional):  
+Si se ejecuta sin parámetros, se toma el país 20, el asignado al autor del programa.  
+.\runnable_program\runnable_program.exe -f ".\in\[2025-3] ANUM - Proyecto Final - Estudiantes.xlsx" "País 16"
+
+7. Ejecutar sin parámetros:  
+Explorador de archivos -> Algoritmo_Interpolacion_Lagrange -> runnable_program -> runnable_program.exe

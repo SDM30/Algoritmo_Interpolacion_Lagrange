@@ -69,5 +69,5 @@
 7. Ejecutar sin parámetros:
 
    ```
-   Explorador de archivos -> Algoritmo_Interpolacion_Lagrange -> dist -> main.exe
+   Explorador de archivos -> Algoritmo_Interpolacion_Lagrange -> runnable_program -> runnable_program.exe
    ```
