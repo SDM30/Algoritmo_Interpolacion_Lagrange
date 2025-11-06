@@ -1,8 +1,0 @@
-/entorno
-/.venv
-/__pycache__
-/build/
-/dist/
-*.spec
-*.~lock*
-/runnable_program
